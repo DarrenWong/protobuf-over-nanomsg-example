@@ -1,3 +1,4 @@
+// source: message.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -161,26 +162,31 @@ proto.message.Message.prototype.getIdList = function() {
 };
 
 
-/** @param {!Array<number>} value */
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.message.Message} returns this
+ */
 proto.message.Message.prototype.setIdList = function(value) {
-  jspb.Message.setField(this, 1, value || []);
+  return jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
  * @param {number} value
  * @param {number=} opt_index
+ * @return {!proto.message.Message} returns this
  */
 proto.message.Message.prototype.addId = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
 /**
  * Clears the list making it empty but non-null.
+ * @return {!proto.message.Message} returns this
  */
 proto.message.Message.prototype.clearIdList = function() {
-  this.setIdList([]);
+  return this.setIdList([]);
 };
 
 
