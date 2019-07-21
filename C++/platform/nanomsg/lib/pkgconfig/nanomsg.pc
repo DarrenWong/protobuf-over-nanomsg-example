@@ -1,0 +1,13 @@
+prefix=/home/ykirzhang/backup/nanomsg-1.1.5/build_x64/install
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: nanomsg
+Description: High-Performance Scalability Protocols
+URL: http://nanomsg.org/
+Version: 1.1.5
+Requires:
+Libs: -L${libdir} -lnanomsg
+Libs.private: -lanl -lrt -lpthread -lnsl
+Cflags: -I${includedir}

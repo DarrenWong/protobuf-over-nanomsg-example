@@ -1,11 +1,18 @@
-# specifying installation prefixes to be searched by the find_package(),
-# find_program(), find_library(), find_file(), and find_path() commands.
-# prefer use protobuf 3.7.1 as example and we install separately with ubuntu 16.04 default 2.6.1 version
-set(CMAKE_PREFIX_PATH "/usr/local/protobuf"
-        "${CMAKE_PREFIX_PATH}")
-FIND_PACKAGE(Protobuf REQUIRED)
-FILE(GLOB protofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.proto")
-PROTOBUF_GENERATE_CPP(PROTOSRCS PROTOHDRS ${protofiles})
+FILE(GLOB proto_files ${CMAKE_CURRENT_SOURCE_DIR}/*.proto)
+
+FOREACH(proto_file ${proto_files})
+    #retrive proto filename only
+    STRING(REGEX REPLACE ".+/(.+)\\..*" "\\1" proto_file_name ${proto_file})
+
+    LIST(APPEND PROTOSRCS "${CMAKE_CURRENT_BINARY_DIR}/${proto_file_name}.pb.cc")
+    LIST(APPEND PROTOHDRS "${CMAKE_CURRENT_BINARY_DIR}/${proto_file_name}.pb.h")
+    ADD_CUSTOM_COMMAND(
+            OUTPUT "${proto_file_name}.pb.h" "${proto_file_name}.pb.cc"
+            COMMAND ${Protobuf_PROTOC_LIBRARIES} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}
+            --cpp_out=${CMAKE_CURRENT_BINARY_DIR}/  ${proto_file_name}.proto
+    )
+ENDFOREACH(proto_file)
+
 add_library(proto STATIC ${PROTOSRCS} ${PROTOHDRS})
-target_link_libraries(proto protobuf ${PROTOBUF_LIBRARIES})
-target_include_directories(proto PUBLIC ${PROTOBUF_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(proto PUBLIC protobuf-x64)
+target_include_directories(proto PUBLIC  ${CMAKE_CURRENT_BINARY_DIR})
