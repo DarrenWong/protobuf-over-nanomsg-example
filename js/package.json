@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "google-protobuf": "^3.7.1",
+    "google-protobuf": "^3.9.0",
     "nanomsg": "^4.0.2"
   }
 }
