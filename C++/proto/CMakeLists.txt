@@ -8,7 +8,7 @@ FOREACH(proto_file ${proto_files})
     LIST(APPEND PROTOHDRS "${CMAKE_CURRENT_BINARY_DIR}/${proto_file_name}.pb.h")
     ADD_CUSTOM_COMMAND(
             OUTPUT "${proto_file_name}.pb.h" "${proto_file_name}.pb.cc"
-            COMMAND ${Protobuf_PROTOC_LIBRARIES} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${Protobuf_PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}
             --cpp_out=${CMAKE_CURRENT_BINARY_DIR}/  ${proto_file_name}.proto
     )
 ENDFOREACH(proto_file)

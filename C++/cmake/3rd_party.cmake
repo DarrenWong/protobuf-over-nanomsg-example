@@ -4,7 +4,7 @@ set(THIRDPARTY_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/platform)
 add_library(protobuf-x64 INTERFACE)
 target_link_libraries(protobuf-x64 INTERFACE ${THIRDPARTY_LIBRARY}/protobuf/x64/lib/libprotobuf.a)
 target_include_directories(protobuf-x64 INTERFACE ${THIRDPARTY_LIBRARY}/protobuf/x64/include)
-set(Protobuf_PROTOC_LIBRARIES ${THIRDPARTY_LIBRARY}/protobuf/x64/bin/protoc)
+set(Protobuf_PROTOC_EXECUTABLE ${THIRDPARTY_LIBRARY}/protobuf/x64/bin/protoc)
 
 # nanomsg
 add_library(nanomsg_static INTERFACE)
