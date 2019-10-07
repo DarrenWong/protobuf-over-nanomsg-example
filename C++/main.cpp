@@ -9,7 +9,7 @@
 #include <nanomsg/nn.h>
 #include <nanomsg/pubsub.h>
 
-#include <proto/message.pb.h>
+#include <message.pb.h>
 
 using namespace std;
 

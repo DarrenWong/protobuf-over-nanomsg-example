@@ -10,4 +10,4 @@ include(3rd_party)
 ADD_SUBDIRECTORY(proto)
 
 ADD_EXECUTABLE(protobuf_over_nanomsg main.cpp)
-TARGET_LINK_LIBRARIES(protobuf_over_nanomsg proto nanomsg)
+TARGET_LINK_LIBRARIES(protobuf_over_nanomsg proto nanomsg_static)

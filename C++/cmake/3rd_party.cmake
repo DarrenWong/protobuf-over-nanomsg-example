@@ -12,4 +12,4 @@ target_include_directories(nanomsg_static
         INTERFACE ${THIRDPARTY_LIBRARY}/nanomsg/include)
 target_link_libraries(
         nanomsg_static
-        INTERFACE ${THIRDPARTY_LIBRARY}/nanomsg/lib/libnanomsg.a anl)
+        INTERFACE ${THIRDPARTY_LIBRARY}/nanomsg/lib/libnanomsg.a anl pthread)
